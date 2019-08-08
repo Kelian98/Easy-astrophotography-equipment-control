@@ -2,9 +2,7 @@
 
 Carrying a laptop for astrophotography can sometimes be annoying. In the field, you have to worry about battery life, long cables connecting all your stuff (camera, focuser, mount, filterwheel, autoguider...), drivers and compatibility, etc. It can quickly get messy. A good alternative is to use a USB Powered Hub attached to the scope or the mount, but that only solves a third of the problems mentioned above. In order to get out of trouble, I found a solution that is light, portable, functional and cheap for my astrophotography setup.
 
-Here is a picture of my current setup (some stuff may be missing).
-[photo]
-
+![Here is a picture of my current setup (some stuff may be missing).](https://github.com/Kelian98/Easy-astrophotography-equipment-control/blob/master/Equipment_with_annotations.jpg)
 ## Equipment needed
 
 In this section, we will assume that you have some scope, GoTo mount, camera, guiding camera. That's all we need for setting up a portable computer capable of managing all these devices. More accessories can be add including filter wheel, electronic focuser, etc.
@@ -59,7 +57,9 @@ If you use the Vk-162 or Vk-172, you can follow this steps :
 2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal"
 3. Install gpsd package : `sudo apt-get install gpsd`
 4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. Keep it in mind.
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/GPS_current_port.png)
 5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 3".
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
 7. Again in terminal, type : `service gpsd restart`
 8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS
