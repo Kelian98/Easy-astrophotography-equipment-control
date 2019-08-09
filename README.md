@@ -110,7 +110,7 @@ When you have connected the Raspberry Pi to your personal wireless network, the 
 
 1. Open a terminal with CTRL + ALT + T
 2. Type : `sudo nano /etc/rc.local` and enter the root password (by default : astroberry)
-3. Command the line `check-wlanconn > /dev/null 2>&1` and under it `astroberry_vap start` such as :
+3. Comment the line `check-wlanconn > /dev/null 2>&1` and type under it `astroberry_vap start` such as :
 ![](images/vap_configure.png)
 4. Exit and save changes !
 
