@@ -2,7 +2,8 @@
 
 Carrying a laptop for astrophotography can sometimes be annoying. In the field, you have to worry about battery life, long cables connecting all your stuff (camera, focuser, mount, filterwheel, autoguider...), drivers and compatibility, etc. It can quickly get messy. A good alternative is to use a USB Powered Hub attached to the scope or the mount, but that only solves a third of the problems mentioned above. In order to get out of trouble, I found a solution that is light, portable, functional and cheap for my astrophotography setup.
 
-![Here is a picture of my current setup (some stuff may be missing).](https://github.com/Kelian98/Easy-astrophotography-equipment-control/blob/master/Equipment_with_annotations.jpg)
+![](images/Equipment_with_annotations.jpg)
+
 ## Equipment needed
 
 In this section, we will assume that you have some scope, GoTo mount, camera, guiding camera. That's all we need for setting up a portable computer capable of managing all these devices. More accessories can be add including filter wheel, electronic focuser, etc.
@@ -54,15 +55,16 @@ Just need to follow the instructions : [Install libgphoto2 and gphoto2 from sour
 If you use the Vk-162 or Vk-172, you can follow this steps :
 
 1. Plug the GPS in Raspberry Pi USB port.
-2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal"
-3. Install gpsd package : `sudo apt-get install gpsd`
-4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. Keep it in mind.
-![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/GPS_current_port.png)
-5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 3".
-![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/edit_default_file.png)
+2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
+3. Install gpsd package : `sudo apt-get install gpsd`.
+4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. Keep it in mind.<br/>
+   ![](images/GPS_current_port.png)
+5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 3".<br/>
+   ![](images/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
-7. Again in terminal, type : `service gpsd restart`
-8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS
+7. Again in terminal, type : `service gpsd restart`.
+8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS.
+   ![](images/gps_info.png)
 9. The GPS is now working !
 
 You can also watch this video with similar process : https://www.youtube.com/watch?v=tQz8Fo5u7Lc&t=820s
@@ -73,11 +75,28 @@ You can also watch this video with similar process : https://www.youtube.com/wat
 
 ### 3. Setting up Kstars and Ekos
 
-I will not explain in depth how to setup Ekos with your equipment because there are plenty of good tutorials online, here is a list :
+I will not explain in depth how to setup Ekos for general usage with your equipment because there are plenty of good tutorials online, here is a list :
 
-- Old but great tutorial for general use and configuration : https://www.youtube.com/watch?v=wNpj9mNc0RE (only interface has changed)
+- Old but great tutorial for general usage and configuration : https://www.youtube.com/watch?v=wNpj9mNc0RE (only interface has changed)
 - This playlist explains each module and their usage : https://www.youtube.com/playlist?list=PLn_g58xBkqHuPUUOnqd6TzqabHQYDKfK1
 - A short live session which explores some modules and functionnalities : https://www.youtube.com/watch?v=3uwyRp8lKt0
-- Official documentation that refers to tutorials : https://www.indilib.org/about/ekos.html
+- Official documentation offers some tutorials : https://www.indilib.org/about/ekos.html
+
+#### GPS
+
+To use the Vk-162 or Vk-172 GPS in Ekos, follow this steps (after completing step 2.2) :
+
+1. Make sure the GPS is properly connected to the Raspberry Pi (see step 2.2).
+2. Launch Kstars, go to _Settings > Configure Kstars > INDI_ and select _GPS Updates Kstars_ under _Time & Location updates_. Be sure that _Time_ and _Location_ are also checked.
+3. Click _Apply_ and _OK_.
+   ![](images/ekos_settings.png)
+
+Now, in order to add it to your Ekos Profile, you have to edit your Ekos profile and in _Auxiliary_, add **GPSD**.
+![](images/add_gps_ekos_profile.png)
+
+When starting INDI, you should see something like this under **GPSD** section :
+![](images/gps_module_start_indi.png)
+
+> Note : If you click on **GPS** in _Refresh_ section, coordinates will be updated.
 
 For specific topics, you can search on the [INDI official forum](https://www.indilib.org/forum.html "INDI official forum"), ask on Facebook groups...
