@@ -4,6 +4,10 @@ Carrying a laptop for astrophotography can sometimes be annoying. In the field, 
 
 ![](images/Equipment_with_annotations.jpg)
 
+> Note 1 : I have attached my Raspberry Pi with velcro strips, it works great.
+
+> Note 2 : As you can see, I still have crazy long cables hanging on this picture. Since, I have replaced them with shorter cables and tied them up.
+
 ## Equipment needed
 
 First of all, we will assume that you have some scope, GoTo mount, camera, guiding camera. That's all we need for setting up a portable computer capable of managing all these devices. More accessories can be add including filter wheel, electronic focuser, etc.
@@ -17,6 +21,8 @@ For our system, we will use :
 
 As you can see, it costs around 100\$, far cheaper than a dedicated astro computer running on Windows with commercial softwares which run on 12V power supply.
 
+> Note : You can save some money if you have a USB powered dew-heater for your scope such as [these](https://www.amazon.com/Telescopes-Temperature-Control-Devices-Freezing/dp/B07R299MQT/ref=sr_1_4?keywords=dew%2Bheater%2Busb&qid=1564516783&s=gateway&sr=8-4&th=1). Indeed, buying a USB powerbank with more capacity than 10,000mAh (let's say +20,000mAh) let you power the Raspberry Pi and your dew-heater(s) for a night long. And it's more convenient than having long cables from the floor with your 12V AGM Battery ascending to the moving telescope. See [Raspberry Pi 3 measured power consumption](https://raspi.tv/2016/how-much-power-does-raspberry-pi3b-use-how-fast-is-it-compared-to-pi2b) for further information.
+
 ## Software
 
 We will run [Astroberry Server](https://github.com/rkaczorek/astroberry-server "Astroberry Server") on the Raspberry Pi 3. This is an open-source modified version of Ubuntu Mate 16.04 created by [Radek Kaczorek](https://github.com/rkaczorek "Radek Kaczorek") that contains all we need.
@@ -25,16 +31,16 @@ The system features many astronomy softwares including Kstars and Ekos (INDI Lib
 
 ### 1. Install Astroberry Server
 
-First, get the image from this link : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view
-Then, if you are on Windows, download the latest version of Etcher from this link : https://www.balena.io/etcher/
-Finally, get the free version of Winrar to unpack Astroberry image file : https://www.win-rar.com/start.html?&L=0
+First, get the image from this link : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view.</br>
+Then, if you are on Windows, download the latest version of Etcher from this link : https://www.balena.io/etcher/.</br>
+Finally, get the free version of Winrar to unpack Astroberry image file : https://www.win-rar.com/start.html?&L=0.
 
 Now that we have finished with softwares installations, let's flash Astroberry on the Raspberry Pi 3.
 
 1. Unpack .xz extension file downloaded above with WinRar.
 2. Simply insert your Micro SD Card (inside the adaptor for SD format) in your SD Card slot of your computer.
 3. Start Etcher, select the previously unpacked .img extension file, select the drive of your SD Card, and click on Flash !
-4. Wait until process is finished...
+4. Wait until process is finished... Writing speed depends on your Micro SD Card (class 10 or better is a good choice for Raspberry Pi usage).
 5. When it's done, eject your SD Card from your computer and insert it into the Raspberry Pi 3.
 
 > Note : Some of the softwares cited above exist for MacOS and Linux distributions as well.
@@ -43,7 +49,7 @@ Now that we have finished with softwares installations, let's flash Astroberry o
 
 Start the Raspberry Pi 3 with SD Card and plug in a mouse, a keyboard and a monitor.
 If everything has been done correctly, it will boot up and get you to Astroberry desktop.
-You can connect it to your personal newtork by clicking on WLAN logo at the right-top of the screen. Enter your network information and you will be connected to Internet.
+You can connect it to your personal newtork by clicking on WLAN logo at the top-right of the screen. Enter your network information and you will be connected to Internet.
 
 #### 2.1 DSLR
 
@@ -59,9 +65,9 @@ If you use the Vk-162 or Vk-172, you can follow this steps :
 1. Plug the GPS in Raspberry Pi USB port.
 2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
 3. Install gpsd package : `sudo apt-get install gpsd`.
-4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. Keep it in mind.<br/>
+4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. **Keep it in mind**.<br/>
    ![](images/GPS_current_port.png)
-5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 3".<br/>
+5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/>
    ![](images/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
 7. Again in terminal, type : `service gpsd restart`.
@@ -84,7 +90,7 @@ I will not explain in depth how to setup Ekos for general usage with your equipm
 - A short live session which explores some modules and functionnalities : https://www.youtube.com/watch?v=3uwyRp8lKt0
 - Official documentation offers some tutorials : https://www.indilib.org/about/ekos.html
 
-For specific topics, you can search on the [INDI official forum](https://www.indilib.org/forum.html "INDI official forum"), ask on Facebook groups...
+> Note : For specific topics, you can search on the [INDI official forum](https://www.indilib.org/forum.html "INDI official forum"), ask on Facebook groups...
 
 #### GPS
 
