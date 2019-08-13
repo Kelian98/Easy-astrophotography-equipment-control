@@ -1,6 +1,8 @@
-# Control the mount, the camera and other accessories with Raspberry Pi 3
+# Astrophotography equipment control
 
 Carrying a laptop for astrophotography can sometimes be annoying. In the field, you have to worry about battery life, long cables connecting all your stuff (camera, focuser, mount, filterwheel, autoguider...), drivers and compatibility, etc. It can quickly get messy. A good alternative is to use a USB Powered Hub attached to the scope or the mount, but that only solves a third of the problems mentioned above. In order to get out of trouble, I found a solution that is light, portable, functional and cheap for any astrophotography setup.
+
+_Lire ce document en français : https://github.com/Kelian98/Easy-astrophotography-equipment-control/blob/master/README.fr.md_
 
 ![](images/Equipment_with_annotations.jpg)
 
@@ -117,7 +119,7 @@ When you have connected the Raspberry Pi to your personal wireless network, the 
 1. Open a terminal with CTRL + ALT + T
 2. Type : `sudo nano /etc/rc.local` and enter the root password (by default : astroberry)
 3. Comment the line `check-wlanconn > /dev/null 2>&1` and type under it `astroberry_vap start` such as :
-![](images/vap_configure.png)
+   ![](images/vap_configure.png)
 4. Exit and save changes !
 
 Now, when the Raspberry boots up, it will create a personal wireless network called **astroberry**. The password to connect to it is also astroberry. Go in your browser to http://192.168.10.1/ and you will be able to use your Raspberry Pi in remote access !
