@@ -4,12 +4,6 @@
 [![Generic badge](https://img.shields.io/badge/languages-EN%2C%20FR-red)](https://shields.io/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
-## Table of contents
-
-1. [Introduction](#introduction)
-2. [Equipment needed](#equipment-needed)
-3. [Software](#software)
-
 ## 1. Introduction
 
 Carrying a laptop for astrophotography can sometimes be annoying. In the field, you have to worry about battery life, long cables connecting all your stuff (camera, focuser, mount, filterwheel, autoguider...), drivers and compatibility, etc. It can quickly get messy. A good alternative is to use a USB Powered Hub attached to the scope or the mount, but that only solves a third of the problems mentioned above. In order to get out of trouble, I found a solution that is light, portable, functional and cheap for any astrophotography setup.
