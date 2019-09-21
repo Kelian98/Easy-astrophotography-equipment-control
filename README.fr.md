@@ -1,5 +1,17 @@
 # Contrôler son télescope facilement et pour pas cher avec un Raspberry Pi 3
 
+[![HitCount](http://hits.dwyl.io/Kelian98/Easy-astrophotography-equipment-control.svg)](http://hits.dwyl.io/Kelian98/Easy-astrophotography-equipment-control)
+[![Generic badge](https://img.shields.io/badge/languages-EN%2C%20FR-red)](https://shields.io/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
+## Table des matières
+
+1. [Introduction](#introduction)
+2. [Équipement nécessaire](#équipment-nécessaire)
+3. [Logiciel](#logiciel)
+
+## 1. Introduction
+
 Utiliser un ordinateur portable pour l'astrophotographie peut parfois être pénible et compliqué. Sur le terrain, vous devez vous soucier de la durée de vie de la batterie, des longs câbles reliant tous les accessoires (caméra, focuser, monture, roue à filtres, autoguidage...), des pilotes et de la compatibilité, etc. Cela peut rapidement devenir difficile. Une bonne alternative consiste à utiliser un Hub USB attaché à la monture, mais cela ne résout qu'un tiers des problèmes mentionnés ci-dessus. Afin de me sortir du pétrin, j'ai trouvé une solution légère, portable, fonctionnelle et bon marché pour tout équipement d'astrophotographie.
 
 _Read this in English: https://github.com/Kelian98/Easy-astrophotography-equipment-control/blob/master/README.md_
@@ -10,7 +22,7 @@ _Read this in English: https://github.com/Kelian98/Easy-astrophotography-equipme
 
 > Remarque 2 : Comme vous pouvez le constater, il me reste encore de longs câbles sur cette photo. Depuis, je les ai remplacés par des câbles plus courts.
 
-## Équipement nécessaire
+## 2. Équipement nécessaire
 
 Tout d'abord, nous supposerons que vous avez un tube optique, une monture GoTo, une caméra et une caméra de guidage. C'est tout ce dont nous avons besoin pour configurer un mini-ordinateur capable de gérer tous ces périphériques. Il est possible d’ajouter plus d’accessoires, notamment une roue à filtre, un focuser électronique, etc.
 
@@ -25,13 +37,13 @@ Comme vous pouvez le constater, cela coûte environ 100€, bien moins cher qu�
 
 > Remarque : Vous pouvez économiser un peu d'argent si vous possèdez des résistances chauffantes USB pour vos tubes optiques comme [celles-ci](https://www.amazon.fr/COOWOO-Chauffe-Objectif-r%C3%A9gulateur-temp%C3%A9rature-t%C3%A9lescopique/dp/B07MHGW4DG/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=r%C3%A9sistance+chauffante+usb&qid=1565702995&s=gateway&sr=8-5). En effet, l’achat d’une batterie externe USB d’une capacité supérieure à 10 000 mAh (disons +20 000 mAh) vous permet d’alimenter le Raspberry Pi et vos résistances chauffantes USB pendant une nuit. Et c'est plus pratique que d'avoir de longs câbles partant de votre batterie AGM 12V jusqu'au télescope en mouvement. Voir [Consommation d'énergie mesurée du Raspberry Pi 3](https://raspi.tv/2016/how-much-power-does-raspberry-pi3b-use-how-fast-is-it-compared-to-pi2b) pour plus d'informations.
 
-## Logiciel
+## 3. Logiciel
 
 On va mettre [Astroberry Server](https://github.com/rkaczorek/astroberry-server "Astroberry Server") sur le Raspberry Pi 3. Il s'agit d'une version modifiée open-source de Ubuntu Mate 16.04 développée par [Radek Kaczorek](https://github.com/rkaczorek "Radek Kaczorek") qui contient tout ce dont on aura besoin.
 Vous pouvez obtenir des instructions supplémentaires [ici](https://github.com/rkaczorek/astroberry-server#how-to-use-it "ici").
 Le système comprend de nombreux logiciels d’astronomie, notamment Kstars et Ekos (bibliothèque INDI), que nous utiliserons.
 
-### 1. Installation d'Astroberry
+### 3.1 Installation d'Astroberry
 
 Premièrement, vous pouvez obtenir l'image d'Astroberry sur ce lien : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view.</br>
 Ensuite, si vous êtes sous Windows, téléchargez la dernière version de Etcher à partir de ce lien : https://www.balena.io/etcher/.</br>
@@ -47,20 +59,20 @@ Maintenant que nous avons terminé l’installation des logiciels, voyons commen
 
 > Remarque: Certains des logiciels cités ci-dessus existent également pour les distributions MacOS et Linux.
 
-### 2. Drivers supplémentaires
+### 3.2 Drivers supplémentaires
 
 Démarrez le Raspberry Pi 3 avec la carte SD et branchez une souris, un clavier et un moniteur.
 Si tout a été fait correctement, il va démarrer et vous amener sur le bureau Astroberry.
 Vous pouvez le connecter à votre réseau WiFi en cliquant sur le logo WLAN en haut à droite de l'écran. Entrez vos informations de réseau et vous serez connecté à Internet.
 
-#### 2.1 DSLR
+#### DSLR
 
 Cette sous-section vise à installer les pilotes requis si vous souhaitez utiliser un reflex numérique non reconnu directement par Ekos. Dans mon cas, je n’ai pas pu contrôler mon Nikon D3300 sous Windows malgré toutes les tentatives effectuées avec de nombreux logiciels (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc).
 
 J'ai trouvé un pilote appelé gPhoto pour Linux disponible [ici](http://www.gphoto.org/proj/libgphoto2/support.php "ici") dans lequel vous pouvez trouver tous les appareils photo reflex numériques compatibles. J'ai pu trouver un bon tutoriel qui m'a permis de l'installer sur le Raspberry Pi 3.
 Vous avez juste à suivre ces instructions : [Install libgphoto2 and gphoto2 from source on Raspberry Pi](https://hyfrmn.wordpress.com/2015/02/03/install-libgphoto2-and-gphoto2-from-source-on-raspberry-pi/ "Install libgphoto2 and gphoto2 from source on Raspberry Pi")
 
-### 2.2 GPS
+#### GPS
 
 Si vous utilisez le Vk-162 ou le Vk-172, procédez comme suit :
 
@@ -83,7 +95,7 @@ Vous pouvez également regarder cette vidéo où l'auteur procède de manière s
 
 > Remarque 2: Je branche toujours le GPS sur le même port USB afin de conserver le même fichier par défaut. Sinon, je devrais probablement répéter les étapes 3 et 4 chaque fois que je le branche sur un autre port USB.
 
-### 3. Mise en place Kstars et Ekos
+### 3.3 Mise en place Kstars et Ekos
 
 Je ne vais pas expliquer en détail comment configurer Ekos pour une utilisation générale avec votre équipement, car il existe de nombreux bons tutoriels en ligne. Voici une liste:
 
@@ -111,7 +123,7 @@ Lorsque vous démarrez INDI, vous devriez voir quelque chose comme ceci dans la 
 
 > Note : Si vous cliquez sur **GPS** dans la section _Refresh_, les coordonnées seront mises à jour.
 
-### 4. Configurer le Raspberry Pi pour une utilisation "bureau à distance"
+### 3.4 Configurer le Raspberry Pi pour une utilisation "bureau à distance"
 
 Un outil de "point d'accès virtuel" est déjà installé sur Astroberry. Cependant, j'ai eu quelques problèmes avec cela.
 Lorsque vous avez connecté le Raspberry Pi à votre réseau sans fil personnel, la carte le recherche automatiquement au démarrage. Astroberry est généralement préconfiguré pour basculer vers son propre point d'accès virtuel s'il ne peut pas atteindre le réseau sans fil personnel. J'ai eu une grosse surprise sur le terrain quand cela n'a pas fonctionné ... Donc, pour être sûr qu'il soit toujours en point d'accès virtuel et éviter les mauvaises surprises, je vous recommande de suivre ces instructions:

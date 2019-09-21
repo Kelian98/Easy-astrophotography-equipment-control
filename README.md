@@ -1,9 +1,16 @@
 # Astrophotography equipment control
 
 [![HitCount](http://hits.dwyl.io/Kelian98/Easy-astrophotography-equipment-control.svg)](http://hits.dwyl.io/Kelian98/Easy-astrophotography-equipment-control)
-[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
 [![Generic badge](https://img.shields.io/badge/languages-EN%2C%20FR-red)](https://shields.io/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
+## Table of contents
+
+1. [Introduction](#introduction)
+2. [Equipment needed](#equipment-needed)
+3. [Software](#software)
+
+## 1. Introduction
 
 Carrying a laptop for astrophotography can sometimes be annoying. In the field, you have to worry about battery life, long cables connecting all your stuff (camera, focuser, mount, filterwheel, autoguider...), drivers and compatibility, etc. It can quickly get messy. A good alternative is to use a USB Powered Hub attached to the scope or the mount, but that only solves a third of the problems mentioned above. In order to get out of trouble, I found a solution that is light, portable, functional and cheap for any astrophotography setup.
 
@@ -15,7 +22,7 @@ _Lire ce document en français : https://github.com/Kelian98/Easy-astrophotograp
 
 > Note 2 : As you can see, I still have crazy long cables hanging on this picture. Since, I have replaced them with shorter cables and tied them up.
 
-## Equipment needed
+## 2. Equipment needed
 
 First of all, we will assume that you have some scope, GoTo mount, camera, guiding camera. That's all we need for setting up a portable computer capable of managing all these devices. More accessories can be add including filter wheel, electronic focuser, etc.
 
@@ -30,13 +37,13 @@ As you can see, it costs around 100\$, far cheaper than a dedicated astro comput
 
 > Note : You can save some money if you have a USB powered dew-heater for your scope such as [these](https://www.amazon.com/Telescopes-Temperature-Control-Devices-Freezing/dp/B07R299MQT/ref=sr_1_4?keywords=dew%2Bheater%2Busb&qid=1564516783&s=gateway&sr=8-4&th=1). Indeed, buying a USB powerbank with more capacity than 10,000mAh (let's say +20,000mAh) let you power the Raspberry Pi and your dew-heater(s) for a night long. And it's more convenient than having long cables from the floor with your 12V AGM Battery ascending to the moving telescope. See [Raspberry Pi 3 measured power consumption](https://raspi.tv/2016/how-much-power-does-raspberry-pi3b-use-how-fast-is-it-compared-to-pi2b) for further information.
 
-## Software
+## 3. Software
 
 We will run [Astroberry Server](https://github.com/rkaczorek/astroberry-server "Astroberry Server") on the Raspberry Pi 3. This is an open-source modified version of Ubuntu Mate 16.04 created by [Radek Kaczorek](https://github.com/rkaczorek "Radek Kaczorek") that contains all we need.
 You can get instructions [here](https://github.com/rkaczorek/astroberry-server#how-to-use-it "here").
 The system features many astronomy softwares including Kstars and Ekos (INDI Library) we will be mainly using.
 
-### 1. Install Astroberry Server
+### 3.1 Install Astroberry Server
 
 First, get the image from this link : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view.</br>
 Then, if you are on Windows, download the latest version of Etcher from this link : https://www.balena.io/etcher/.</br>
@@ -52,20 +59,20 @@ Now that we have finished with softwares installations, let's flash Astroberry o
 
 > Note : Some of the softwares cited above exist for MacOS and Linux distributions as well.
 
-### 2. Additional drivers
+### 3.2 Additional drivers
 
 Start the Raspberry Pi 3 with SD Card and plug in a mouse, a keyboard and a monitor.
 If everything has been done correctly, it will boot up and get you to Astroberry desktop.
 You can connect it to your personal newtork by clicking on WLAN logo at the top-right of the screen. Enter your network information and you will be connected to Internet.
 
-#### 2.1 DSLR
+#### DSLR
 
 This sub-section aims to install required drivers if you want to use a DSLR not directly recognized by Ekos. In my case, I wasn't able to control my Nikon D3300 on Windows despite all attempts with many softwares (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc).
 
 I found a driver called gPhoto for Linux ([here](http://www.gphoto.org/proj/libgphoto2/support.php "here") you can find all compatible DSLR Cameras) that was compatible with my camera. I was able to find a good tutorial that worked for me to install it on the Raspberry Pi 3.
 Just need to follow the instructions : [Install libgphoto2 and gphoto2 from source on Raspberry Pi](https://hyfrmn.wordpress.com/2015/02/03/install-libgphoto2-and-gphoto2-from-source-on-raspberry-pi/ "Install libgphoto2 and gphoto2 from source on Raspberry Pi")
 
-#### 2.2 GPS
+#### GPS
 
 If you use the Vk-162 or Vk-172, you can follow this steps :
 
@@ -88,7 +95,7 @@ You can also watch this video with similar process : https://www.youtube.com/wat
 
 > Note 2 : I always plug the GPS in the same USB port in order to keep the default file the same. Otherwise, I would probably have to repeat steps 3 and 4 each time I plug it in another USB port.
 
-### 3. Setting up Kstars and Ekos
+### 3.3 Setting up Kstars and Ekos
 
 I will not explain in depth how to setup Ekos for general usage with your equipment because there are plenty of good tutorials online, here is a list :
 
@@ -116,7 +123,7 @@ When starting INDI, you should see something like this under **GPSD** section :
 
 > Note : If you click on **GPS** in _Refresh_ section, coordinates will be updated.
 
-### 4. Configure the Raspberry Pi for remote desktop
+### 3.4 Configure the Raspberry Pi for remote desktop
 
 There is a "virtual access point" tool aleady installed on Astroberry. However, I got some trouble with it.
 When you have connected the Raspberry Pi to your personal wireless network, the board will automatically look for it on boot up. Normally, Astroberry is pre-configured to switch to virtual access point if it cannot reach the personal wireless network. I had a big surprise in the field when it didn't work... So, to be sure that it is always in virtual access point, you should follow these instructions :
