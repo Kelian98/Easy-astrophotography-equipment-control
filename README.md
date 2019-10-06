@@ -31,39 +31,66 @@ As you can see, it costs around 100\$, far cheaper than a dedicated astro comput
 
 > Note : You can save some money if you have a USB powered dew-heater for your scope such as [these](https://www.amazon.com/Telescopes-Temperature-Control-Devices-Freezing/dp/B07R299MQT/ref=sr_1_4?keywords=dew%2Bheater%2Busb&qid=1564516783&s=gateway&sr=8-4&th=1). Indeed, buying a USB powerbank with more capacity than 10,000mAh (let's say +20,000mAh) let you power the Raspberry Pi and your dew-heater(s) for a night long. And it's more convenient than having long cables from the floor with your 12V AGM Battery ascending to the moving telescope. See [Raspberry Pi 3 measured power consumption](https://raspi.tv/2016/how-much-power-does-raspberry-pi3b-use-how-fast-is-it-compared-to-pi2b) for further information.
 
-## 3. Software
+## 3. Setting up the Raspberry Pi
 
-We will run [Astroberry Server](https://github.com/rkaczorek/astroberry-server "Astroberry Server") on the Raspberry Pi 3. This is an open-source modified version of Ubuntu Mate 16.04 created by [Radek Kaczorek](https://github.com/rkaczorek "Radek Kaczorek") that contains all we need.
-You can get instructions [here](https://github.com/rkaczorek/astroberry-server#how-to-use-it "here").
-The system features many astronomy softwares including Kstars and Ekos (INDI Library) we will be mainly using.
+We will run [Ubuntu Mate 16.04](https://ubuntu-pi-flavour-maker.org/download/ "Ubuntu Mate 16.04") on the Raspberry Pi 3. This is an open-source OS based on Linux. We will install astronomy softwares including Kstars and Ekos (INDI Library) we will be mainly using.
 
-### 3.1 Install Astroberry Server
+> Note : I don't use the newest version (18.04) for now, because it is not stable as the 16.04.
 
-First, get the image from this link : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view.</br>
+### 3.1 Install Ubuntu Mate 16.04
+
+First, get the image from this link : https://ubuntu-pi-flavour-maker.org/download/.</br>
 Then, if you are on Windows, download the latest version of Etcher from this link : https://www.balena.io/etcher/.</br>
-Finally, get the free version of Winrar to unpack Astroberry image file : https://www.win-rar.com/start.html?&L=0.
+Finally, get the free version of Winrar to unpack the image file : https://www.win-rar.com/start.html?&L=0.
 
-Now that we have finished with softwares installations, let's flash Astroberry on the Raspberry Pi 3.
+Now that we have finished with softwares installations, let's flash Ubuntu Mate on the Raspberry Pi 3.
 
 1. Unpack .xz extension file downloaded above with WinRar.
 2. Simply insert your Micro SD Card (inside the adaptor for SD format) in your SD Card slot of your computer.
 3. Start Etcher, select the previously unpacked .img extension file, select the drive of your SD Card, and click on Flash !
 4. Wait until process is finished... Writing speed depends on your Micro SD Card (class 10 or better is a good choice for Raspberry Pi usage).
 5. When it's done, eject your SD Card from your computer and insert it into the Raspberry Pi 3.
+6. Start the Raspberry Pi 3 with SD Card and plug in a mouse, a keyboard and a monitor. If everything has been done correctly, it will boot up and get you to Ubuntu Mate installation. Complete the steps required. You can connect it to your personal newtork by clicking on WLAN logo at the top-right of the screen.
 
 > Note : Some of the softwares cited above exist for MacOS and Linux distributions as well.
 
-### 3.2 Additional drivers
+### 3.2 Install softwares
 
-Start the Raspberry Pi 3 with SD Card and plug in a mouse, a keyboard and a monitor.
-If everything has been done correctly, it will boot up and get you to Astroberry desktop.
-You can connect it to your personal newtork by clicking on WLAN logo at the top-right of the screen. Enter your network information and you will be connected to Internet.
+#### INDI, Ekos and Kstars
+
+To install INDI, Ekos and Kstars, make sure your Raspberry Pi is connected to the Internet and can follow this steps :
+
+1. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
+2. Run the following command : Type `sudo apt-add-repository ppa:mutlaqja/ppa`.
+3. Then, type `sudo apt-get update`.
+4. After the update is finished, you can install INDI with `sudo apt-get install indi-full gsc`.
+5. Finally, to install Ekos and Kstars : `sudo apt-get install indi-full kstars-bleeding`.
+
+All the main softwares have been downloaded and installed !
+
+> Source : https://www.indilib.org/download/ubuntu.html
+
+#### Astrometry.net for Platesolving
+
+In order to get full control of your astrophotography rig, you may want to do platesolving. If you don't know what it is, here is a short definition : _Platesolving is a technique that measures precisely where the telescope is pointing by taking a CCD image and then using various pattern matching techniques, matches the stars in the image to a given star catalog. Knowing approximately where the telescope is pointing and the system image scale, plate solving algorithms can calculate the center of the image to sub-arc-second accuracy. Successful plate solving is essential for automated imaging._
+
+If you are far away from home or you can't have internet while imaging, you will have to download the star catalog locally on your device to do "offline" platesolving :
+
+1. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
+2. Run this command : `sudo apt-get install astrometry.net`
+3. Then, get the index files from this page : https://indilib.org/about/ekos/alignment-module.html. I suggest to download them from your desktop computer and transfer the packages later to your Raspberry.
+4. Copy the files to the Raspberry Pi Desktop in a folder called "Platesolving_Files".
+5. Right-click on Desktop and select "Open in terminal". Run `cd Platesolving_Files` and `ls`. Names of index files should appear.
+6. Run `sudo dpkg -i name_of_index_files.deb` for each index files you have. It will take some time...
+7. All required files for offline platesolving are now installed !
+
+> Sources : https://www.ccdware.com/help/ccdap5/hs670.htm ; https://indilib.org/about/ekos/alignment-module.html
 
 #### DSLR
 
-This sub-section aims to install required drivers if you want to use a DSLR not directly recognized by Ekos. In my case, I wasn't able to control my Nikon D3300 on Windows despite all attempts with many softwares (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc).
+This sub-section aims to install required drivers if you want to use a DSLR not directly recognized by Ekos. In my case, I wasn't able to control my Nikon D3300 on Windows despite all attempts with many softwares (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc). That's why I switched to Linux for astrophotography.
 
-I found a driver called gPhoto for Linux ([here](http://www.gphoto.org/proj/libgphoto2/support.php "here") you can find all compatible DSLR Cameras) that was compatible with my camera. I was able to find a good tutorial that worked for me to install it on the Raspberry Pi 3.
+I found a driver called gPhoto for Linux ([here](http://www.gphoto.org/proj/libgphoto2/support.php "here") you can find all compatible DSLR Cameras) that was compatible with my camera. Normally, it is already installed on your Raspberry Pi if you have carefully followed the processus to get INDI, Ekos and Kstars. Otherwise, I was able to find a good tutorial to install it on the Raspberry Pi 3.
 Just need to follow the instructions : [Install libgphoto2 and gphoto2 from source on Raspberry Pi](https://hyfrmn.wordpress.com/2015/02/03/install-libgphoto2-and-gphoto2-from-source-on-raspberry-pi/ "Install libgphoto2 and gphoto2 from source on Raspberry Pi")
 
 #### GPS
@@ -119,13 +146,31 @@ When starting INDI, you should see something like this under **GPSD** section :
 
 ### 3.4 Configure the Raspberry Pi for remote desktop
 
-There is a "virtual access point" tool aleady installed on Astroberry. However, I got some trouble with it.
-When you have connected the Raspberry Pi to your personal wireless network, the board will automatically look for it on boot up. Normally, Astroberry is pre-configured to switch to virtual access point if it cannot reach the personal wireless network. I had a big surprise in the field when it didn't work... So, to be sure that it is always in virtual access point, you should follow these instructions :
+#### VNC
 
-1. Open a terminal with CTRL + ALT + T
-2. Type : `sudo nano /etc/rc.local` and enter the root password (by default : astroberry)
-3. Comment the line `check-wlanconn > /dev/null 2>&1` and type under it `astroberry_vap start` such as :
-   ![](images/vap_configure.png)
-4. Exit and save changes !
+In the field, you may be unable to have a desktop monitor, keyboard, mouse, etc. But you can use your laptop or smartphone to control the Raspberry Pi with **Virtual Network Connection**. We will use RealVNC which is free and easy to configure. You can get the RealVNC Viewer app for any platform here : https://www.realvnc.com/fr/connect/download/viewer/
 
-Now, when the Raspberry boots up, it will create a personal wireless network called **astroberry**. The password to connect to it is also astroberry. Go in your browser to http://192.168.10.1/ and you will be able to use your Raspberry Pi in remote access !
+Let's see how to install RealVNC Server on the Raspberry Pi :
+
+1. Go to this page and download the file : https://www.realvnc.com/en/connect/download/vnc/raspberrypi/.
+2. Move it to your Raspberry Pi desktop, open a terminal and run `sudo dpkg -i name_of_package.deb`.
+3. Once completed, if you run `vncserver`, it will start a VNC connection from the Raspberry and give you the IP Address.
+4. With your other device (smartphone, laptop...), go to VNC Viewer app, and add the Raspberry Pi connection with IP Address from above and session password.
+5. You should be able to control the Raspberry from your other device !
+
+> Note : To connect to VNC, make sure that both devices are connected to the same network.
+
+#### Hotspot
+
+If you don't have an internet connection, the Raspberry can create his own WiFi Hotspot.
+You can proceed like that : http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
+You can also set the connection in **automatic mode**. Now, when the Raspberry boots up, it will create a personal wireless network automatically.
+By connecting your smartphone or laptop to this WiFi Hotspot, you can do VNC and control the Raspberry easily.
+
+You will notice that even if you are connected to the Hotspot, you can't do VNC because the service has to be started from the Raspberry Pi itself.
+What I recommend to do, is to first connect to your Raspberry in **SSH** and then start the VNC service.
+
+1. Install [PuTTY](https://putty.org/ "PuTTY") if your second device is a Windows laptop or [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") if it's an Android.
+2. Connect to the Raspberry Pi Hotspot and get its IP Address.
+3. Enter IP Address and sudo password. Once connected, run `vncserver`.
+4. You can now open VNC Viewer and control your Raspberry Pi !
