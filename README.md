@@ -100,13 +100,13 @@ If you use the Vk-162 or Vk-172, you can follow this steps :
 1. Plug the GPS in Raspberry Pi USB port.
 2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
 3. Install gpsd package : `sudo apt-get install gpsd`.
-4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. **Keep it in mind**.<br/>
+4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. **Keep it in mind**.<br/></br>
    ![](images/GPS_current_port.png)
-5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/>
+5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/></br>
    ![](images/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
 7. Again in terminal, type : `service gpsd restart`.
-8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS.
+8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS.</br></br>
    ![](images/gps_info.png)
 9. The GPS is now working !
 
@@ -133,13 +133,13 @@ To use the Vk-162 or Vk-172 GPS in Ekos, follow this steps (after completing ste
 
 1. Make sure the GPS is properly connected to the Raspberry Pi (see step 2.2).
 2. Launch Kstars, go to _Settings > Configure Kstars > INDI_ and select _GPS Updates Kstars_ under _Time & Location updates_. Be sure that _Time_ and _Location_ are also checked.
-3. Click _Apply_ and _OK_.</br>
+3. Click _Apply_ and _OK_.</br></br>
    ![](images/ekos_settings.png)
 
-Now, in order to add it to your Ekos Profile, you have to edit your Ekos profile and in _Auxiliary_, add **GPSD**.
+Now, in order to add it to your Ekos Profile, you have to edit your Ekos profile and in _Auxiliary_, add **GPSD**.</br>
 ![](images/add_gps_ekos_profile.png)
 
-When starting INDI, you should see something like this under **GPSD** section :
+When starting INDI, you should see something like this under **GPSD** section :</br>
 ![](images/gps_module_start_indi.png)
 
 > Note : If you click on **GPS** in _Refresh_ section, coordinates will be updated.
@@ -156,7 +156,8 @@ Let's see how to install RealVNC Server on the Raspberry Pi :
 2. Move it to your Raspberry Pi desktop, open a terminal and run `sudo dpkg -i name_of_package.deb`.
 3. Once completed, if you run `vncserver`, it will start a VNC connection from the Raspberry and give you the IP Address.
 4. With your other device (smartphone, laptop...), go to VNC Viewer app, and add the Raspberry Pi connection with IP Address from above and session password.
-5. You should be able to control the Raspberry from your other device !</br>
+5. You should be able to control the Raspberry from your other device !
+</br></br>
    ![](images/vnc_desktop.jpg)
 
 > Note : To connect to VNC, make sure that both devices are connected to the same network.
@@ -173,11 +174,10 @@ What I recommend to do, is to first connect to your Raspberry in **SSH** and the
 
 1. Install [PuTTY](https://putty.org/ "PuTTY") if your second device is a Windows laptop or [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") if it's an Android.
 2. Connect to the Raspberry Pi Hotspot and get its IP Address.</br>
-   ![](images/hotspot.png)
-   ![](images/rpi_ip_address.PNG)
-3. Enter IP Address in PuTTY.</br>
+   ![](images/hotspot.png) ![](images/rpi_ip_address.PNG)
+3. Enter IP Address in PuTTY.</br></br>
    ![](images/putty_config.PNG)
-4. Once connected, enter your login and password. Then, run `vncserver`.</br>
+4. Once connected, enter your login and password. Then, run `vncserver`.</br></br>
    ![](images/start_vnc_putty.PNG)
 5. You can now open VNC Viewer and control your Raspberry Pi !
 
@@ -189,6 +189,6 @@ What I recommend to do, is to first connect to your Raspberry in **SSH** and the
 4. Launch SSH client on your device and connect to the Raspberry Pi.
 5. Start VNC Server from SSH.
 6. Connect your device to VNC.
-7. Launch Kstars and enjoy imaging !</br>
+7. Launch Kstars and enjoy imaging !</br></br>
 
 ![](images/final_illustration.jpg)
