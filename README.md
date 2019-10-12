@@ -156,7 +156,8 @@ Let's see how to install RealVNC Server on the Raspberry Pi :
 2. Move it to your Raspberry Pi desktop, open a terminal and run `sudo dpkg -i name_of_package.deb`.
 3. Once completed, if you run `vncserver`, it will start a VNC connection from the Raspberry and give you the IP Address.
 4. With your other device (smartphone, laptop...), go to VNC Viewer app, and add the Raspberry Pi connection with IP Address from above and session password.
-5. You should be able to control the Raspberry from your other device !
+5. You should be able to control the Raspberry from your other device !</br>
+   ![](images/vnc_desktop.jpg)
 
 > Note : To connect to VNC, make sure that both devices are connected to the same network.
 
@@ -171,6 +172,23 @@ You will notice that even if you are connected to the Hotspot, you can't do VNC 
 What I recommend to do, is to first connect to your Raspberry in **SSH** and then start the VNC service.
 
 1. Install [PuTTY](https://putty.org/ "PuTTY") if your second device is a Windows laptop or [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") if it's an Android.
-2. Connect to the Raspberry Pi Hotspot and get its IP Address.
-3. Enter IP Address and sudo password. Once connected, run `vncserver`.
-4. You can now open VNC Viewer and control your Raspberry Pi !
+2. Connect to the Raspberry Pi Hotspot and get its IP Address.</br>
+   ![](images/hotspot.png)
+   ![](images/rpi_ip_address.PNG)
+3. Enter IP Address in PuTTY.</br>
+   ![](images/putty_config.PNG)
+4. Once connected, enter your login and password. Then, run `vncserver`.</br>
+   ![](images/start_vnc_putty.PNG)
+5. You can now open VNC Viewer and control your Raspberry Pi !
+
+## 4. Basic workflow
+
+1. Connect all your equipment to the Raspberry Pi (DSLR, guiding camera, GPS, mount...).
+2. Start the Raspberry Pi. It will automatically create his own Hotspot.
+3. Connect your PC or smartphone to the Hotspot.
+4. Launch SSH client on your device and connect to the Raspberry Pi.
+5. Start VNC Server from SSH.
+6. Connect your device to VNC.
+7. Launch Kstars and enjoy imaging !</br>
+
+![](images/final_illustration.jpg)
