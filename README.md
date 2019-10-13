@@ -58,10 +58,10 @@ Now that we have finished with softwares installations, let's flash Ubuntu Mate 
 
 #### INDI, Ekos and Kstars
 
-To install INDI, Ekos and Kstars, make sure your Raspberry Pi is connected to the Internet and can follow this steps :
+To install INDI, Ekos and Kstars, make sure your Raspberry Pi is connected to the Internet and follow this steps :
 
 1. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
-2. Run the following command : Type `sudo apt-add-repository ppa:mutlaqja/ppa`.
+2. Run the following command : `sudo apt-add-repository ppa:mutlaqja/ppa`.
 3. Then, type `sudo apt-get update`.
 4. After the update is finished, you can install INDI with `sudo apt-get install indi-full gsc`.
 5. Finally, to install Ekos and Kstars : `sudo apt-get install indi-full kstars-bleeding`.
@@ -157,7 +157,7 @@ Let's see how to install RealVNC Server on the Raspberry Pi :
 3. Once completed, if you run `vncserver`, it will start a VNC connection from the Raspberry and give you the IP Address.
 4. With your other device (smartphone, laptop...), go to VNC Viewer app, and add the Raspberry Pi connection with IP Address from above and session password.
 5. You should be able to control the Raspberry from your other device !
-</br></br>
+   </br></br>
    ![](images/vnc_desktop.jpg)
 
 > Note : To connect to VNC, make sure that both devices are connected to the same network.

@@ -33,17 +33,17 @@ Comme vous pouvez le constater, cela coûte environ 100€, bien moins cher qu�
 
 ## 3. Logiciel
 
-On va mettre [Astroberry Server](https://github.com/rkaczorek/astroberry-server "Astroberry Server") sur le Raspberry Pi 3. Il s'agit d'une version modifiée open-source de Ubuntu Mate 16.04 développée par [Radek Kaczorek](https://github.com/rkaczorek "Radek Kaczorek") qui contient tout ce dont on aura besoin.
-Vous pouvez obtenir des instructions supplémentaires [ici](https://github.com/rkaczorek/astroberry-server#how-to-use-it "ici").
-Le système comprend de nombreux logiciels d’astronomie, notamment Kstars et Ekos (bibliothèque INDI), que nous utiliserons.
+On va mettre [Ubuntu Mate 16.04](https://ubuntu-pi-flavour-maker.org/download/ "Ubuntu Mate 16.04") sur le Raspberry Pi 3. Il s'agit d'un OS open-source basé sur Linux. Nous installerons des logiciels d’astronomie, notamment Kstars et Ekos (bibliothèque INDI), que nous utiliserons principalement.
 
-### 3.1 Installation d'Astroberry
+> Remarque : Je n'utilise pas la version la plus récente 18.04 pour l'instant, car celle-ci n'est pas aussi stable et performante que la 16.04.
 
-Premièrement, vous pouvez obtenir l'image d'Astroberry sur ce lien : https://drive.google.com/file/d/1zGwXLWDD8hubpuarafMWPft6F6Q4bV8R/view.</br>
+### 3.1 Installation d'Ubuntu Mate 16.04
+
+Premièrement, vous pouvez obtenir l'image d'Ubuntu Mate 16.04 sur ce lien : https://ubuntu-pi-flavour-maker.org/download/.</br>
 Ensuite, si vous êtes sous Windows, téléchargez la dernière version de Etcher à partir de ce lien : https://www.balena.io/etcher/.</br>
-Enfin, obtenez la version gratuite de Winrar pour décompresser le fichier image Astroberry : https://www.win-rar.com/start.html?&L=0.
+Enfin, obtenez la version gratuite de Winrar pour décompresser le fichier image : https://www.win-rar.com/start.html?&L=0.
 
-Maintenant que nous avons terminé l’installation des logiciels, voyons comment installer Astroberry sur le Raspberry Pi 3.
+Maintenant que nous avons terminé l’installation des logiciels, voyons comment installer Ubuntu Mate 16.04 sur le Raspberry Pi 3.
 
 1. Décompressez le fichier d’extension .xz téléchargé ci-dessus avec WinRar.
 2. Insérez simplement votre carte Micro SD (à l'intérieur de l'adaptateur pour le format SD) dans la fente pour carte SD de votre ordinateur.
@@ -53,11 +53,38 @@ Maintenant que nous avons terminé l’installation des logiciels, voyons commen
 
 > Remarque: Certains des logiciels cités ci-dessus existent également pour les distributions MacOS et Linux.
 
-### 3.2 Drivers supplémentaires
+### 3.2 Installation des logiciels
 
-Démarrez le Raspberry Pi 3 avec la carte SD et branchez une souris, un clavier et un moniteur.
-Si tout a été fait correctement, il va démarrer et vous amener sur le bureau Astroberry.
-Vous pouvez le connecter à votre réseau WiFi en cliquant sur le logo WLAN en haut à droite de l'écran. Entrez vos informations de réseau et vous serez connecté à Internet.
+#### INDI, Ekos et Kstars
+
+Pour installer INDI, Ekos et Kstars, assurez-vous que votre Raspberry Pi est bien connecté à Internet et suivez les étapes :
+
+1. Ouvrez un terminal de commande en appuyant sur CTRL + ALT + T ou en faisant un clic-droit sur le Bureau puis en sélectionnant "Ouvrir dans un terminal".
+2. Entrez la commande suivante : `sudo apt-add-repository ppa:mutlaqja/ppa`.
+3. Ensuite, entrez : `sudo apt-get update`.
+4. Une fois la MAJ finie, vous pouvez installer INDI avec la commande `sudo apt-get install indi-full gsc`.
+5. Enfin, pour installer Ekos et Kstars : `sudo apt-get install indi-full kstars-bleeding`.
+
+Tous les logiciels principaux ont été téléchargés et installés !
+
+> Source : https://www.indilib.org/download/ubuntu.html
+
+#### Astrometry.net pour le Platesolving
+
+Afin d’obtenir le contrôle total de votre équipement astrophotographique, vous souhaiterez peut-être effectuer ce qu'on appelle **Platesolving**. Si vous ne savez pas ce que c'est, voici une courte définition:
+_C'est une technique qui mesure avec précision le point de visée du télescope en prenant une image, puis en utilisant diverses techniques de correspondance de motifs, fait correspondre les étoiles de l'image à un catalogue d'étoiles donné. En sachant approximativement où le télescope est dirigé et la focale de l'image capturée, les algorithmes de platesolving peuvent calculer le centre de l’image avec une précision inférieure à la seconde d'arc._
+
+Si vous êtes loin de chez vous ou que vous ne pouvez pas utiliser Internet pour votre séance d'imagerie, vous devrez télécharger localement le catalogue d'étoiles sur votre appareil pour que le Platesolving fonctionne en hors-connexion :
+
+1. Ouvrez un terminal de commande en appuyant sur CTRL + ALT + T ou en faisant un clic-droit sur le Bureau puis en sélectionnant "Ouvrir dans un terminal".
+2. Entrez cette commande : `sudo apt-get install astrometry.net`
+3. Ensuite, récupérez les fichiers d’index à partir de cette page: https://indilib.org/about/ekos/alignment-module.html. Je suggère de les télécharger à partir de votre ordinateur de bureau et de transférer les packages ultérieurement sur votre Raspberry.
+4. Copier les fichiers sur le bureau de votre Raspberry Pi dans un dossier appelé "Platesolving_files".
+5. Cliquez avec le bouton droit sur Bureau et sélectionnez "Ouvrir dans le terminal". Exécutez `cd Platesolving_Files` et`ls`. Les noms des fichiers d'index doivent apparaître.
+6. Exécutez `sudo dpkg -i name_of_index_files.deb` pour chaque fichier d’index que vous avez. Cela prendra du temps...
+7. Tous les fichiers requis pour platesolve en hors connexion sont maintenant installés!
+
+> Sources : https://www.ccdware.com/help/ccdap5/hs670.htm ; https://indilib.org/about/ekos/alignment-module.html
 
 #### DSLR
 
@@ -73,13 +100,13 @@ Si vous utilisez le Vk-162 ou le Vk-172, procédez comme suit :
 1. Branchez le GPS sur le port USB du Raspberry Pi.
 2. Ouvrez un terminal de commande en appuyant sur CTRL + ALT + T ou faites un clic droit sur le bureau et sélectionnez "Ouvrir dans le terminal".
 3. Installer le package gpsd : `sudo apt-get install gpsd`.
-4. Pour voir sur quel port le GPS est connecté, tapez : `ls /dev/tty*`. Lors du branchement / débranchement du GPS, certaines adresses telles que /dev/ttyACM0 or /dev/ttyACM1 devraient apparaître et disparaître . **Notez-les**.<br/>
+4. Pour voir sur quel port le GPS est connecté, tapez : `ls /dev/tty*`. Lors du branchement / débranchement du GPS, certaines adresses telles que /dev/ttyACM0 or /dev/ttyACM1 devraient apparaître et disparaître . **Notez-les**.<br/></br>
    ![](images/GPS_current_port.png)
-5. Maintenant, vous devez configurer le fichier GPS par défaut. Tapez `sudo pico /etc/default/gpsd` and replacez le champ DEVICES="port obtenu à l'étape 4" tel quel.<br/>
+5. Maintenant, vous devez configurer le fichier GPS par défaut. Tapez `sudo pico /etc/default/gpsd` and replacez le champ DEVICES="port obtenu à l'étape 4" tel quel.<br/></br>
    ![](images/edit_default_file.png)
 6. Appuyez sur CTRL + X pour quitter et enregistrer les modifications en appuyant sur Y lorsque vous y êtes invité.
 7. Toujours dans le terminal de commande, tapez : `service gpsd restart`.
-8. Enfin, pour savoir si le GPS fonctionne, regardez si le voyant vert clignote et tapez : `cgps -s`, vous devriez voir les informations actuellement reçues par le GPS.
+8. Enfin, pour savoir si le GPS fonctionne, regardez si le voyant vert clignote et tapez : `cgps -s`, vous devriez voir les informations actuellement reçues par le GPS.</br></br>
    ![](images/gps_info.png)
 9. Le GPS doit maintenant fonctionner !
 
@@ -119,13 +146,49 @@ Lorsque vous démarrez INDI, vous devriez voir quelque chose comme ceci dans la 
 
 ### 3.4 Configurer le Raspberry Pi pour une utilisation "bureau à distance"
 
-Un outil de "point d'accès virtuel" est déjà installé sur Astroberry. Cependant, j'ai eu quelques problèmes avec cela.
-Lorsque vous avez connecté le Raspberry Pi à votre réseau sans fil personnel, la carte le recherche automatiquement au démarrage. Astroberry est généralement préconfiguré pour basculer vers son propre point d'accès virtuel s'il ne peut pas atteindre le réseau sans fil personnel. J'ai eu une grosse surprise sur le terrain quand cela n'a pas fonctionné ... Donc, pour être sûr qu'il soit toujours en point d'accès virtuel et éviter les mauvaises surprises, je vous recommande de suivre ces instructions:
+#### VNC
 
-1. Ouvrez un terminal avec CTRL + ALT + T
-2. Tapez : `sudo nano /etc/rc.local` et entrez le mot de passe root (par défaut: astroberry)
-3. Mettez la ligne `check-wlanconn > /dev/null 2>&1` en commentaire et tapez au-dessous `astroberry_vap start` comme ceci :
-   ![](images/vap_configure.png)
-4. Exit and sauvegardez les changements apportés au fichier !
+Sur le terrain, vous ne pourrez peut-être pas disposer d'un moniteur de bureau, d'un clavier, d'une souris, etc. Mais vous pouvez utiliser votre ordinateur portable ou votre smartphone pour contrôler le Raspberry Pi avec **Connexion réseau virtuelle**. Nous utiliserons RealVNC, qui est gratuit et facile à configurer. Vous pouvez obtenir l'application RealVNC Viewer pour n'importe quelle plateforme ici: https://www.realvnc.com/fr/connect/download/viewer/
 
-Désormais, lorsque le Raspberry Pi démarrera, il créera son propre réseau sans fil personnel appelé **astroberry**. Le mot de passe pour s'y connecter est également astroberry. Allez dans votre navigateur à http://192.168.10.1/ et vous pourrez utiliser votre Raspberry Pi en accès à distance !
+Voyons comment installer RealVNC Server sur le Raspberry Pi:
+
+1. Accédez à cette page et téléchargez le fichier: https://www.realvnc.com/en/connect/download/vnc/raspberrypi/.
+2. Déplacez-le sur votre bureau Raspberry Pi, ouvrez un terminal et exécutez `sudo dpkg -i name_of_package.deb`.
+3. Une fois terminé, si vous exécutez `vncserver`, une connexion VNC sera établie à partir du Raspberry et vous donnera l’adresse IP.
+4. Avec votre autre appareil (smartphone, ordinateur portable ...), accédez à l'application VNC Viewer, puis ajoutez la connexion Raspberry Pi avec l'adresse IP ci-dessus et le mot de passe de session.
+5. Vous devriez pouvoir contrôler le Raspberry à partir de votre autre appareil!
+   </br> </br>
+   ![](images/vnc_desktop.jpg)
+
+> Remarque : pour vous connecter à VNC, assurez-vous que les deux appareils sont connectés au même réseau.
+
+#### Hotspot
+
+Si vous ne disposez pas d'une connexion Internet, le Raspberry peut créer son propre point d'accès WiFi.
+Vous pouvez procéder comme ça: http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
+Vous pouvez également définir la connexion en **mode automatique**. Désormais, lorsque le Raspberry démarrera, il créera automatiquement un réseau sans fil personnel.
+En connectant votre smartphone ou votre ordinateur portable à ce point d'accès WiFi vous pouvez utiliser VNC et contrôler facilement le Raspberry.
+
+Vous remarquerez que même si vous êtes connecté au Hotspot, vous ne pouvez pas utiliser VNC car le service doit être démarré à partir de Raspberry Pi lui-même.
+Ce que je recommande, c’est d’abord de vous connecter à votre Raspberry en **SSH**, puis de démarrer le service VNC.
+
+1. Installez [PuTTY](https://putty.org/ "PuTTY") si votre deuxième appareil est un ordinateur portable Windows ou [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") s'il s'agit d'un Android.
+2. Connectez-vous au hotspot Raspberry Pi et obtenez son adresse IP.</br>
+   ![](images/hotspot.png) ![](images/rpi_ip_address.PNG)
+3. Entrez l'adresse IP dans PuTTY. </br></br>
+   ![](images/putty_config.PNG)
+4. Une fois connecté, entrez votre identifiant et votre mot de passe. Ensuite, lancez `vncserver`. </br></br>
+   ![](images/start_vnc_putty.PNG)
+5. Vous pouvez maintenant ouvrir VNC Viewer et contrôler votre Raspberry Pi!
+
+## 4. Workflow habituel
+
+1. Connectez tous vos équipements au Raspberry Pi (DSLR, caméra de guidage, GPS, support ...).
+2. Démarrez le Raspberry Pi. Il créera automatiquement son propre Hotspot.
+3. Connectez votre PC ou votre smartphone au Hotspot.
+4. Lancez le client SSH sur votre appareil et connectez-vous au Raspberry Pi.
+5. Démarrez le serveur VNC à partir de SSH.
+6. Connectez votre appareil au VNC.
+7. Lancez Kstars et démarrez votre session d'imagerie ! </br></br>
+
+![](images/final_illustration.jpg)
