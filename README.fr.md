@@ -71,18 +71,20 @@ Tous les logiciels principaux ont été téléchargés et installés !
 
 #### Astrometry.net pour le Platesolving
 
-Afin d’obtenir le contrôle total de votre équipement astrophotographique, vous souhaiterez peut-être effectuer ce qu'on appelle **Platesolving**. Si vous ne savez pas ce que c'est, voici une courte définition:
-_C'est une technique qui mesure avec précision le point de visée du télescope en prenant une image, puis en utilisant diverses techniques de correspondance de motifs, fait correspondre les étoiles de l'image à un catalogue d'étoiles donné. En sachant approximativement où le télescope est dirigé et la focale de l'image capturée, les algorithmes de platesolving peuvent calculer le centre de l’image avec une précision inférieure à la seconde d'arc._
+Afin d’obtenir le contrôle total de votre équipement astrophotographique, vous souhaiterez peut-être effectuer ce qu'on appelle **Platesolving**. Si vous ne savez pas ce que c'est, voici une courte définition :
+_Platesolving est une technique qui mesure avec précision le point de visée du télescope en prenant une image, puis en utilisant diverses techniques de correspondance de motifs, fait correspondre les étoiles de l'image à un catalogue d'étoiles donné. En sachant approximativement où le télescope est dirigé et la focale de l'image capturée, les algorithmes de platesolving peuvent calculer le centre de l’image avec une précision inférieure à la seconde d'arc._
 
 Si vous êtes loin de chez vous ou que vous ne pouvez pas utiliser Internet pour votre séance d'imagerie, vous devrez télécharger localement le catalogue d'étoiles sur votre appareil pour que le Platesolving fonctionne en hors-connexion :
 
 1. Ouvrez un terminal de commande en appuyant sur CTRL + ALT + T ou en faisant un clic-droit sur le Bureau puis en sélectionnant "Ouvrir dans un terminal".
 2. Entrez cette commande : `sudo apt-get install astrometry.net`
-3. Ensuite, récupérez les fichiers d’index à partir de cette page: https://indilib.org/about/ekos/alignment-module.html. Je suggère de les télécharger à partir de votre ordinateur de bureau et de transférer les packages ultérieurement sur votre Raspberry.
+3. Ensuite, récupérez les fichiers d’index à partir de cette page: https://indilib.org/about/ekos/alignment-module.html. Je vous suggère de les télécharger à partir de votre ordinateur de bureau et de transférer les packages ultérieurement sur votre Raspberry via une clé USB ou tout autre support de média externe.
 4. Copier les fichiers sur le bureau de votre Raspberry Pi dans un dossier appelé "Platesolving_files".
 5. Cliquez avec le bouton droit sur Bureau et sélectionnez "Ouvrir dans le terminal". Exécutez `cd Platesolving_Files` et`ls`. Les noms des fichiers d'index doivent apparaître.
-6. Exécutez `sudo dpkg -i name_of_index_files.deb` pour chaque fichier d’index que vous avez. Cela prendra du temps...
+6. Exécutez `sudo dpkg -i name_of_index_files.deb` pour chaque fichier d’index que vous avez. Cela prendra pas mal de temps...
 7. Tous les fichiers requis pour platesolve en hors connexion sont maintenant installés!
+
+Par défaut, Ekos envoie une image sur le serveur astrometry.net. Veillez à bien modifier les paramètres en sélectionnant "offline".
 
 > Sources : https://www.ccdware.com/help/ccdap5/hs670.htm ; https://indilib.org/about/ekos/alignment-module.html
 
@@ -90,7 +92,7 @@ Si vous êtes loin de chez vous ou que vous ne pouvez pas utiliser Internet pour
 
 Cette sous-section vise à installer les pilotes requis si vous souhaitez utiliser un reflex numérique non reconnu directement par Ekos. Dans mon cas, je n’ai pas pu contrôler mon Nikon D3300 sous Windows malgré toutes les tentatives effectuées avec de nombreux logiciels (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc).
 
-J'ai trouvé un pilote appelé gPhoto pour Linux disponible [ici](http://www.gphoto.org/proj/libgphoto2/support.php "ici") dans lequel vous pouvez trouver tous les appareils photo reflex numériques compatibles. J'ai pu trouver un bon tutoriel qui m'a permis de l'installer sur le Raspberry Pi 3.
+J'ai trouvé un pilote appelé gPhoto pour Linux disponible [ici](http://www.gphoto.org/proj/libgphoto2/support.php "ici") dans lequel vous pouvez trouver tous les appareils photo reflex numériques compatibles. J'ai également pu trouver un bon tutoriel qui m'a permis de l'installer sur le Raspberry Pi 3.
 Vous avez juste à suivre ces instructions : [Install libgphoto2 and gphoto2 from source on Raspberry Pi](https://hyfrmn.wordpress.com/2015/02/03/install-libgphoto2-and-gphoto2-from-source-on-raspberry-pi/ "Install libgphoto2 and gphoto2 from source on Raspberry Pi")
 
 #### GPS
@@ -112,15 +114,15 @@ Si vous utilisez le Vk-162 ou le Vk-172, procédez comme suit :
 
 Vous pouvez également regarder cette vidéo où l'auteur procède de manière similaire: https://www.youtube.com/watch?v=tQz8Fo5u7Lc&t=820s
 
-> Remarque 1: À l'intérieur, le GPS peut ne pas trouver le signal. Je recommande de faire ça dehors.
+> Remarque 1: À l'intérieur, le GPS peut ne pas trouver le signal. Je vous recommande de faire ça dehors.
 
 > Remarque 2: Je branche toujours le GPS sur le même port USB afin de conserver le même fichier par défaut. Sinon, je devrais probablement répéter les étapes 3 et 4 chaque fois que je le branche sur un autre port USB.
 
 ### 3.3 Mise en place Kstars et Ekos
 
-Je ne vais pas expliquer en détail comment configurer Ekos pour une utilisation générale avec votre équipement, car il existe de nombreux bons tutoriels en ligne. Voici une liste:
+Je ne vais pas expliquer en détail comment configurer Ekos pour une utilisation générale avec votre équipement, car il existe de nombreux bons tutoriels en ligne. Voici une liste :
 
-- Daté mais excellent tutoriel pour utilisation et configuration générales : https://www.youtube.com/watch?v=wNpj9mNc0RE (seule l'interface a été modifiée)
+- Daté mais excellent tutoriel pour utilisation et configuration générale : https://www.youtube.com/watch?v=wNpj9mNc0RE (seule l'interface a été modifiée)
 - Cette liste de lecture explique chaque module et son utilisation: https://www.youtube.com/playlist?list=PLn_g58xBkqHuPUUOnqd6TzqabHQYDKfK1
 - Une courte session live qui explore quelques modules et fonctionnalités: https://www.youtube.com/watch?v=3uwyRp8lKt0
 - La documentation officielle propose des tutoriels: https://www.indilib.org/about/ekos.html
@@ -148,28 +150,28 @@ Lorsque vous démarrez INDI, vous devriez voir quelque chose comme ceci dans la 
 
 #### VNC
 
-Sur le terrain, vous ne pourrez peut-être pas disposer d'un moniteur de bureau, d'un clavier, d'une souris, etc. Mais vous pouvez utiliser votre ordinateur portable ou votre smartphone pour contrôler le Raspberry Pi avec **Connexion réseau virtuelle**. Nous utiliserons RealVNC, qui est gratuit et facile à configurer. Vous pouvez obtenir l'application RealVNC Viewer pour n'importe quelle plateforme ici: https://www.realvnc.com/fr/connect/download/viewer/
+Sur le terrain, vous ne pourrez peut-être pas disposer d'un moniteur de bureau, d'un clavier, d'une souris, etc. Mais vous pouvez utiliser votre ordinateur portable ou votre smartphone pour contrôler le Raspberry Pi avec **Connexion réseau virtuelle**. Bien pratique en hiver, de rester dans la voiture à l'abri du froid et de pouvoir contrôler son matos durant la session d'acquisition en mode, le tout sans-fil ! Nous utiliserons RealVNC, qui est gratuit et facile à configurer. Vous pouvez obtenir l'application RealVNC Viewer pour n'importe quelle plateforme ici: https://www.realvnc.com/fr/connect/download/viewer/
 
 Voyons comment installer RealVNC Server sur le Raspberry Pi:
 
 1. Accédez à cette page et téléchargez le fichier: https://www.realvnc.com/en/connect/download/vnc/raspberrypi/.
-2. Déplacez-le sur votre bureau Raspberry Pi, ouvrez un terminal et exécutez `sudo dpkg -i name_of_package.deb`.
+2. Déplacez-le sur le bureau de votre Raspberry Pi, ouvrez un terminal et exécutez `sudo dpkg -i name_of_package.deb`.
 3. Une fois terminé, si vous exécutez `vncserver`, une connexion VNC sera établie à partir du Raspberry et vous donnera l’adresse IP.
 4. Avec votre autre appareil (smartphone, ordinateur portable ...), accédez à l'application VNC Viewer, puis ajoutez la connexion Raspberry Pi avec l'adresse IP ci-dessus et le mot de passe de session.
-5. Vous devriez pouvoir contrôler le Raspberry à partir de votre autre appareil!
+5. Vous devriez pouvoir contrôler le Raspberry à partir de votre autre appareil sans aucun fil !
    </br> </br>
    ![](images/vnc_desktop.jpg)
 
-> Remarque : pour vous connecter à VNC, assurez-vous que les deux appareils sont connectés au même réseau.
+> Remarque : pour vous connecter au VNC, assurez-vous que les deux appareils sont connectés au même réseau.
 
 #### Hotspot
 
 Si vous ne disposez pas d'une connexion Internet, le Raspberry peut créer son propre point d'accès WiFi.
-Vous pouvez procéder comme ça: http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
+Vous pouvez procéder de la sorte pour créer le Hotspot : http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
 Vous pouvez également définir la connexion en **mode automatique**. Désormais, lorsque le Raspberry démarrera, il créera automatiquement un réseau sans fil personnel.
-En connectant votre smartphone ou votre ordinateur portable à ce point d'accès WiFi vous pouvez utiliser VNC et contrôler facilement le Raspberry.
+En connectant votre smartphone ou votre ordinateur portable à ce point d'accès WiFi, vous pouvez utiliser le VNC et contrôler facilement le Raspberry.
 
-Vous remarquerez que même si vous êtes connecté au Hotspot, vous ne pouvez pas utiliser VNC car le service doit être démarré à partir de Raspberry Pi lui-même.
+Vous remarquerez que même si vous êtes connecté au Hotspot, vous ne pouvez pas utiliser VNC car le service doit être démarré à partir du Raspberry Pi lui-même.
 Ce que je recommande, c’est d’abord de vous connecter à votre Raspberry en **SSH**, puis de démarrer le service VNC.
 
 1. Installez [PuTTY](https://putty.org/ "PuTTY") si votre deuxième appareil est un ordinateur portable Windows ou [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") s'il s'agit d'un Android.
