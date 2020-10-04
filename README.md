@@ -14,7 +14,7 @@ _Lire ce document en français : https://github.com/Kelian98/Easy-astrophotograp
 
 > Note 1 : I have attached my Raspberry Pi with velcro strips, it works great.
 
-> Note 2 : As you can see, I still have crazy long cables hanging on this picture. Since, I have replaced them with shorter cables and tied them up.
+> Note 2 : As you can see, cable management is very important to keep everything steady on the scope, which I haven't done yet.
 
 ## 2. Equipment needed
 
@@ -22,35 +22,35 @@ First of all, we will assume that you have some scope, GoTo mount, camera, guidi
 
 For our system, we will use :
 
-- [Raspberry Pi 3](https://www.amazon.com/s?k=raspberry+pi+3&ref=nb_sb_noss_1:// "Raspberry Pi 3") with case, heatsinks and Micro SD Card (32Go or more recommended)
-- [USB Power Bank](https://www.amazon.com/s?k=power+bank&ref=nb_sb_noss_2 "USB Power Bank") with a capacity of at least 10,000mAh and 2.1-2.5A USB output
+- [Raspberry Pi 4 4GB RAM](https://thepihut.com/collections/raspberry-pi-kits-and-bundles/products/raspberry-pi-starter-kit?variant=20336446079038 "Raspberry Pi 4") with case, power supply and Micro SD Card (16Go or more recommended)
+- [USB Power Bank](https://www.amazon.com/s?k=power+bank&ref=nb_sb_noss_2 "USB Power Bank") with a capacity of at least 15,000mAh and 2.1-2.5A USB output
 - [Specific cable](https://www.firstlightoptics.com/sky-watcher-mount-accessories/lynx-astro-ftdi-eqdir-usb-adapter-for-sky-watcher-eq5-pro-heq5-syntrek-pro-az-eq5-gt-az-eq6-gt-and-eq8-mounts.html "Specific cable") to connect your mount to the board (in this case, EQDIR cable for SkyWatcher mounts)
 - [GPS USB Dongle](https://www.amazon.com/s?k=vk-172&ref=nb_sb_noss_1 "GPS USB Dongle") to obtain precise location (I use a Vk-172, but Vk-162 is built with a better antenna and is also compatible)
 
-As you can see, it costs around 100\$, far cheaper than a dedicated astro computer running on Windows with commercial softwares which run on 12V power supply.
+As you can see, it costs around 120\$, far cheaper than a dedicated astro computer running on Windows with commercial softwares which run on 12V power supply.
 
-> Note : You can save some money if you have a USB powered dew-heater for your scope such as [these](https://www.amazon.com/Telescopes-Temperature-Control-Devices-Freezing/dp/B07R299MQT/ref=sr_1_4?keywords=dew%2Bheater%2Busb&qid=1564516783&s=gateway&sr=8-4&th=1). Indeed, buying a USB powerbank with more capacity than 10,000mAh (let's say +20,000mAh) let you power the Raspberry Pi and your dew-heater(s) for a night long. And it's more convenient than having long cables from the floor with your 12V AGM Battery ascending to the moving telescope. See [Raspberry Pi 3 measured power consumption](https://raspi.tv/2016/how-much-power-does-raspberry-pi3b-use-how-fast-is-it-compared-to-pi2b) for further information.
+> Note : You can save some money if you have a USB powered dew-heater for your scope such as [these](https://www.amazon.com/Telescopes-Temperature-Control-Devices-Freezing/dp/B07R299MQT/ref=sr_1_4?keywords=dew%2Bheater%2Busb&qid=1564516783&s=gateway&sr=8-4&th=1). Indeed, buying a USB powerbank with more capacity than 10,000mAh (let's say +20,000mAh) let you power the Raspberry Pi and your dew-heater(s) for a night long. And it's more convenient than having long cables from the floor with your 12V AGM Battery ascending to the moving telescope. See [Raspberry Pi 4 measured power consumption](https://www.pidramble.com/wiki/benchmarks/power-consumption) for further information.
 
-## 3. Setting up the Raspberry Pi
+## 3. Software
 
-We will run [Ubuntu Mate 16.04](https://ubuntu-pi-flavour-maker.org/download/ "Ubuntu Mate 16.04") on the Raspberry Pi 3. This is an open-source OS based on Linux. We will install astronomy softwares including Kstars and Ekos (INDI Library) we will be mainly using.
+We will run the latest version of [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/ "Raspberry Pi OS") on the Raspberry Pi 4. This is an open-source OS based on Linux made for the Raspberry Pi microcomputer. We will install astronomy softwares including Kstars and Ekos (INDI Library) we will be mainly using.
 
-> Note : I don't use the newest version (18.04) for now, because it is not stable as the 16.04.
+> Note : I recommend installing the version with Desktop only, since we will not be using much of the recommended software.
 
-### 3.1 Install Ubuntu Mate 16.04
+### 3.1 Install Raspberry Pi OS
 
-First, get the image from this link : https://ubuntu-pi-flavour-maker.org/download/.</br>
+First, get the image from this link : https://www.raspberrypi.org/downloads/raspberry-pi-os/</br>
 Then, if you are on Windows, download the latest version of Etcher from this link : https://www.balena.io/etcher/.</br>
 Finally, get the free version of Winrar to unpack the image file : https://www.win-rar.com/start.html?&L=0.
 
-Now that we have finished with softwares installations, let's flash Ubuntu Mate on the Raspberry Pi 3.
+Now that we have finished with softwares installations, let's flash Raspberry Pi OS on the Raspberry Pi 4.
 
 1. Unpack .xz extension file downloaded above with WinRar.
 2. Simply insert your Micro SD Card (inside the adaptor for SD format) in your SD Card slot of your computer.
 3. Start Etcher, select the previously unpacked .img extension file, select the drive of your SD Card, and click on Flash !
 4. Wait until process is finished... Writing speed depends on your Micro SD Card (class 10 or better is a good choice for Raspberry Pi usage).
-5. When it's done, eject your SD Card from your computer and insert it into the Raspberry Pi 3.
-6. Start the Raspberry Pi 3 with SD Card and plug in a mouse, a keyboard and a monitor. If everything has been done correctly, it will boot up and get you to Ubuntu Mate installation. Complete the steps required. You can connect it to your personal newtork by clicking on WLAN logo at the top-right of the screen.
+5. When it's done, eject your SD Card from your computer and insert it into the Raspberry Pi 4.
+6. Start the Raspberry Pi 4 with SD Card and plug in a mouse, a keyboard and a monitor. If everything has been done correctly, it will boot up and get you to Raspberry Pi OS installation. Complete the steps required.
 
 > Note : Some of the softwares cited above exist for MacOS and Linux distributions as well.
 
@@ -61,14 +61,18 @@ Now that we have finished with softwares installations, let's flash Ubuntu Mate 
 To install INDI, Ekos and Kstars, make sure your Raspberry Pi is connected to the Internet and follow this steps :
 
 1. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
-2. Run the following command : `sudo apt-add-repository ppa:mutlaqja/ppa`.
-3. Then, type `sudo apt-get update`.
-4. After the update is finished, you can install INDI with `sudo apt-get install indi-full gsc`.
-5. Finally, to install Ekos and Kstars : `sudo apt-get install indi-full kstars-bleeding`.
+2. Run the following commands :
+```
+wget -O - https://www.astroberry.io/repo/key | sudo apt-key add -
+sudo su -c "echo 'deb https://www.astroberry.io/repo/ buster main' > /etc/apt/sources.list.d/astroberry.list"
+sudo apt update
+```
+3. After the update is finished, you can install INDI with `sudo apt-get install indi-full gsc`.
+4. Finally, to install Ekos and Kstars : `sudo apt-get install indi-full kstars-bleeding`.
 
 All the main softwares have been downloaded and installed !
 
-> Source : https://www.indilib.org/download/ubuntu.html
+> Source : https://indilib.org/get-indi/download-rpi.html
 
 #### Astrometry.net for Platesolving
 
@@ -77,12 +81,14 @@ In order to get full control of your astrophotography rig, you may want to do pl
 If you are far away from home or you can't have internet while imaging, you will have to download the star catalog locally on your device to do "offline" platesolving :
 
 1. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
-2. Run this command : `sudo apt-get install astrometry.net`
-3. Then, get the index files from this page : https://indilib.org/about/ekos/alignment-module.html. I suggest to download them from your desktop computer and transfer the packages later to your Raspberry.
+2. Run this command to check if astrometry.net has been successfully installed with previous commands : `sudo apt-get install astrometry.net`
+3. Then, get the index files from this page : http://data.astrometry.net/4100/. I suggest to download them from your desktop computer and transfer the packages later to your Raspberry Pi. Otherwise, you can download them by launching a terminal and entering : `wget http://data.astrometry.net/4100/index-4107.fits`
 4. Copy the files to the Raspberry Pi Desktop in a folder called "Platesolving_Files".
-5. Right-click on Desktop and select "Open in terminal". Run `cd Platesolving_Files` and `ls`. Names of index files should appear.
-6. Run `sudo dpkg -i name_of_index_files.deb` for each index files you have. It will take some time...
+5. Copy the content of this folder to the specific folder where astrometry.net will look for the platesolving files : `sudo cp /home/pi/Desktop/Platesolving_files /usr/share/astrometry/`
+![](images/copy_astrometry_to_directory.png)
 7. All required files for offline platesolving are now installed !
+
+By default, Ekos sends an image to the astrometry.net server. Make sure to change the settings by selecting "offline".
 
 > Sources : https://www.ccdware.com/help/ccdap5/hs670.htm ; https://indilib.org/about/ekos/alignment-module.html
 
@@ -90,7 +96,8 @@ If you are far away from home or you can't have internet while imaging, you will
 
 This sub-section aims to install required drivers if you want to use a DSLR not directly recognized by Ekos. In my case, I wasn't able to control my Nikon D3300 on Windows despite all attempts with many softwares (Sequence Generator Pro, BackyardNikon, APT Astrophotography Tool, etc). That's why I switched to Linux for astrophotography.
 
-I found a driver called gPhoto for Linux ([here](http://www.gphoto.org/proj/libgphoto2/support.php "here") you can find all compatible DSLR Cameras) that was compatible with my camera. Normally, it is already installed on your Raspberry Pi if you have carefully followed the processus to get INDI, Ekos and Kstars. Otherwise, I was able to find a good tutorial to install it on the Raspberry Pi 3.
+I found a driver called gPhoto for Linux ([here](http://www.gphoto.org/proj/libgphoto2/support.php "here") you can find all compatible DSLR Cameras) that was compatible with my camera. Normally, it is already installed on your Raspberry Pi if you have carefully followed the processus to get INDI, Ekos and Kstars. Otherwise, I was able to find a good tutorial to install it on the Raspberry Pi 4.
+Normally, it should already be installed when installing INDI, Ekos and Kstars.
 Just need to follow the instructions : [Install libgphoto2 and gphoto2 from source on Raspberry Pi](https://hyfrmn.wordpress.com/2015/02/03/install-libgphoto2-and-gphoto2-from-source-on-raspberry-pi/ "Install libgphoto2 and gphoto2 from source on Raspberry Pi")
 
 #### GPS
@@ -102,7 +109,7 @@ If you use the Vk-162 or Vk-172, you can follow this steps :
 3. Install gpsd package : `sudo apt-get install gpsd`.
 4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. **Keep it in mind**.<br/></br>
    ![](images/GPS_current_port.png)
-5. Now you have to configure the GPS default file. Type `sudo pico /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/></br>
+5. Now you have to configure the GPS default file. Type `sudo nano /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/></br>
    ![](images/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
 7. Again in terminal, type : `service gpsd restart`.
@@ -150,7 +157,8 @@ When starting INDI, you should see something like this under **GPSD** section :<
 
 In the field, you may be unable to have a desktop monitor, keyboard, mouse, etc. But you can use your laptop or smartphone to control the Raspberry Pi with **Virtual Network Connection**. We will use RealVNC which is free and easy to configure. You can get the RealVNC Viewer app for any platform here : https://www.realvnc.com/fr/connect/download/viewer/
 
-Let's see how to install RealVNC Server on the Raspberry Pi :
+RealVNC Server is installed by default on the Raspberry Pi.
+If it is not the cas, procede as follow :
 
 1. Go to this page and download the file : https://www.realvnc.com/en/connect/download/vnc/raspberrypi/.
 2. Move it to your Raspberry Pi desktop, open a terminal and run `sudo dpkg -i name_of_package.deb`.
