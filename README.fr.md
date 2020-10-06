@@ -174,9 +174,27 @@ Si ce n'est pas le cas, procédez comme suit :
 #### Hotspot
 
 Si vous ne disposez pas d'une connexion Internet, la Raspberry peut créer son propre point d'accès WiFi.
-Vous pouvez procéder de la sorte pour créer le Hotspot : http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
-Vous pouvez également définir la connexion en **mode automatique**. Désormais, lorsque la Raspberry démarrera, il créera automatiquement un réseau sans fil personnel.
-En connectant votre smartphone ou votre ordinateur portable à ce point d'accès WiFi, vous pouvez utiliser le VNC et contrôler facilement la Raspberry.
+Vous pouvez procéder de la sorte pour créer le Hotspot.
+Vous pouvez également définir la connexion en **mode automatique**. Désormais, lorsque la Raspberry démarrera, elle créera automatiquement un réseau sans fil personnel.
+En connectant votre smartphone ou votre ordinateur portable à ce point d'accès WiFi, vous pouvez utiliser le VNC et contrôler facilement la Raspberry Pi.
+
+1. Se connecter à un réseau WIFI/Ethernet disposant d'une connexion internet
+2. Mettre à jour la Raspberry Pi avec `sudo apt update`
+3. Installez network-manager : `sudo apt install network-manager-gnome`
+4. Désactivez les services dhcpcd :
+	`sudo systemctl stop dhcpcd`
+	`sudo systemctl disable dhcpcd`
+   ![](images/stop_dhcpcd.png)
+5. Redémarrez la Raspberry Pi avec `sudo reboot -h now`
+6. Configurez les connexions en cliquant en haut à droite sur le nouvel icône du gestionnaire de réseau.
+   ![](images/connections_widget.png)
+7. Ajoutez un réseau en cliquant sur le bouton +
+   ![](images/add_connection_1.png)
+8. Sélectionnez le type Wifi
+   ![](images/add_connection_2.png)
+9. Sélectionnez le mode Hotspot
+   ![](images/select_hotspot.png)
+10. Redémarrez et les changements devraient être effectifs
 
 Vous remarquerez que même si vous êtes connecté au Hotspot, vous ne pouvez pas utiliser VNC car le service doit être démarré à partir du Raspberry Pi lui-même.
 Ce que je recommande, c’est d’abord de vous connecter à votre Raspberry en **SSH**, puis de démarrer le service VNC.

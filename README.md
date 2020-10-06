@@ -86,7 +86,7 @@ If you are far away from home or you can't have internet while imaging, you will
 4. Copy the files to the Raspberry Pi Desktop in a folder called "Platesolving_Files".
 5. Copy the content of this folder to the specific folder where astrometry.net will look for the platesolving files : `sudo cp /home/pi/Desktop/Platesolving_files /usr/share/astrometry/`
 ![](images/copy_astrometry_to_directory.png)
-7. All required files for offline platesolving are now installed !
+6. All required files for offline platesolving are now installed !
 
 By default, Ekos sends an image to the astrometry.net server. Make sure to change the settings by selecting "offline".
 
@@ -173,12 +173,30 @@ If it is not the cas, procede as follow :
 #### Hotspot
 
 If you don't have an internet connection, the Raspberry can create his own WiFi Hotspot.
-You can proceed like that : http://ubuntuhandbook.org/index.php/2016/04/create-wifi-hotspot-ubuntu-16-04-android-supported/.
+You can proceed such as follow.
 You can also set the connection in **automatic mode**. Now, when the Raspberry boots up, it will create a personal wireless network automatically.
-By connecting your smartphone or laptop to this WiFi Hotspot, you can do VNC and control the Raspberry easily.
+By connecting your smartphone or laptop to this WiFi Hotspot, you can do VNC and control the Raspberry Pi easily.
+
+1. Connect to a WIFI / Ethernet network with an internet connection
+2. Update the Raspberry Pi with `sudo apt update`
+3. Install network-manager: `sudo apt install network-manager-gnome`
+4. Disable the dhcpcd services:
+   `sudo systemctl stop dhcpcd`
+   `sudo systemctl disable dhcpcd`
+   ![] (images/stop_dhcpcd.png)
+5. Restart the Raspberry Pi with `sudo reboot -h now`
+6. Configure the connections by clicking on the new network manager icon at the top right.
+   ![](images/connections_widget.png)
+7. Add a network by clicking on the + button
+   ![](images/add_connection_1.png)
+8. Select the Wifi type
+   ![](images/add_connection_2.png)
+9. Select Hotspot mode
+   ![](images/select_hotspot.png)
+10. Reboot and the changes should take effect.
 
 You will notice that even if you are connected to the Hotspot, you can't do VNC because the service has to be started from the Raspberry Pi itself.
-What I recommend to do, is to first connect to your Raspberry in **SSH** and then start the VNC service.
+What I recommend to do, is to first connect to your Raspberry Pi in **SSH** and then start the VNC service.
 
 1. Install [PuTTY](https://putty.org/ "PuTTY") if your second device is a Windows laptop or [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") if it's an Android.
 2. Connect to the Raspberry Pi Hotspot and get its IP Address.</br>
