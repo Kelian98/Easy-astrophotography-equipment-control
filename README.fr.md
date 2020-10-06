@@ -183,16 +183,16 @@ En connectant votre smartphone ou votre ordinateur portable à ce point d'accès
 3. Installez network-manager : `sudo apt install network-manager-gnome`
 4. Désactivez les services dhcpcd :
 	`sudo systemctl stop dhcpcd`
-	`sudo systemctl disable dhcpcd`
+	`sudo systemctl disable dhcpcd`</br></br>
    ![](images/stop_dhcpcd.png)
 5. Redémarrez la Raspberry Pi avec `sudo reboot -h now`
-6. Configurez les connexions en cliquant en haut à droite sur le nouvel icône du gestionnaire de réseau.
+6. Configurez les connexions en cliquant en haut à droite sur le nouvel icône du gestionnaire de réseau.</br></br>
    ![](images/connections_widget.png)
-7. Ajoutez un réseau en cliquant sur le bouton +
+7. Ajoutez un réseau en cliquant sur le bouton +</br></br>
    ![](images/add_connection_1.png)
-8. Sélectionnez le type Wifi
+8. Sélectionnez le type Wifi</br></br>
    ![](images/add_connection_2.png)
-9. Sélectionnez le mode Hotspot
+9. Sélectionnez le mode Hotspot</br></br>
    ![](images/select_hotspot.png)
 10. Redémarrez et les changements devraient être effectifs
 

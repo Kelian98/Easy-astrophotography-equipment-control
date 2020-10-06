@@ -182,16 +182,16 @@ By connecting your smartphone or laptop to this WiFi Hotspot, you can do VNC and
 3. Install network-manager: `sudo apt install network-manager-gnome`
 4. Disable the dhcpcd services:
    `sudo systemctl stop dhcpcd`
-   `sudo systemctl disable dhcpcd`
-   ![] (images/stop_dhcpcd.png)
+   `sudo systemctl disable dhcpcd`</br></br>
+   ![](images/stop_dhcpcd.png)
 5. Restart the Raspberry Pi with `sudo reboot -h now`
-6. Configure the connections by clicking on the new network manager icon at the top right.
+6. Configure the connections by clicking on the new network manager icon at the top right.</br></br>
    ![](images/connections_widget.png)
-7. Add a network by clicking on the + button
+7. Add a network by clicking on the + button</br></br>
    ![](images/add_connection_1.png)
-8. Select the Wifi type
+8. Select the Wifi type</br></br>
    ![](images/add_connection_2.png)
-9. Select Hotspot mode
+9. Select Hotspot mode</br></br>
    ![](images/select_hotspot.png)
 10. Reboot and the changes should take effect.
 
