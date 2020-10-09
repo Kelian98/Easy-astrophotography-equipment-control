@@ -10,7 +10,7 @@ Carrying a laptop for astrophotography can sometimes be annoying. In the field, 
 
 _Lire ce document en français : https://github.com/Kelian98/Easy-astrophotography-equipment-control/blob/master/README.fr.md_
 
-![](images/Equipment_with_annotations.jpg)
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/Equipment_with_annotations.jpg)
 
 > Note 1 : I have attached my Raspberry Pi with velcro strips, it works great.
 
@@ -85,7 +85,7 @@ If you are far away from home or you can't have internet while imaging, you will
 3. Then, get the index files from this page : http://data.astrometry.net/4100/. I suggest to download them from your desktop computer and transfer the packages later to your Raspberry Pi. Otherwise, you can download them by launching a terminal and entering : `wget http://data.astrometry.net/4100/index-4107.fits`
 4. Copy the files to the Raspberry Pi Desktop in a folder called "Platesolving_Files".
 5. Copy the content of this folder to the specific folder where astrometry.net will look for the platesolving files : `sudo cp /home/pi/Desktop/Platesolving_files /usr/share/astrometry/`
-![](images/copy_astrometry_to_directory.png)
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/copy_astrometry_to_directory.png)
 6. All required files for offline platesolving are now installed !
 
 By default, Ekos sends an image to the astrometry.net server. Make sure to change the settings by selecting "offline".
@@ -108,13 +108,13 @@ If you use the Vk-162 or Vk-172, you can follow this steps :
 2. Open a command terminal by pressing CTRL + ALT + T or right-click on Desktop and select "Open in terminal".
 3. Install gpsd package : `sudo apt-get install gpsd`.
 4. To see on which port the GPS is connected, type : `ls /dev/tty*`. When plugging/unplugging the GPS, some address such as /dev/ttyACM0 or /dev/ttyACM1 should appear and disappear. **Keep it in mind**.<br/></br>
-   ![](images/GPS_current_port.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/GPS_current_port.png)
 5. Now you have to configure the GPS default file. Type `sudo nano /etc/default/gpsd` and edit DEVICES="port obtained at step 4".<br/></br>
-   ![](images/edit_default_file.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/edit_default_file.png)
 6. Press CTRL + X to exit and save changes by pressing Y when asked.
 7. Again in terminal, type : `service gpsd restart`.
 8. Finally to know if the GPS is working, look if the green LED is blinking and type : `cgps -s`, you should see current information received by the GPS.</br></br>
-   ![](images/gps_info.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/gps_info.png)
 9. The GPS is now working !
 
 You can also watch this video with similar process : https://www.youtube.com/watch?v=tQz8Fo5u7Lc&t=820s
@@ -141,13 +141,13 @@ To use the Vk-162 or Vk-172 GPS in Ekos, follow this steps (after completing ste
 1. Make sure the GPS is properly connected to the Raspberry Pi (see step 2.2).
 2. Launch Kstars, go to _Settings > Configure Kstars > INDI_ and select _GPS Updates Kstars_ under _Time & Location updates_. Be sure that _Time_ and _Location_ are also checked.
 3. Click _Apply_ and _OK_.</br></br>
-   ![](images/ekos_settings.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/ekos_settings.png)
 
 Now, in order to add it to your Ekos Profile, you have to edit your Ekos profile and in _Auxiliary_, add **GPSD**.</br>
-![](images/add_gps_ekos_profile.png)
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/add_gps_ekos_profile.png)
 
 When starting INDI, you should see something like this under **GPSD** section :</br>
-![](images/gps_module_start_indi.png)
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/gps_module_start_indi.png)
 
 > Note : If you click on **GPS** in _Refresh_ section, coordinates will be updated.
 
@@ -166,7 +166,7 @@ If it is not the cas, procede as follow :
 4. With your other device (smartphone, laptop...), go to VNC Viewer app, and add the Raspberry Pi connection with IP Address from above and session password.
 5. You should be able to control the Raspberry from your other device !
    </br></br>
-   ![](images/vnc_desktop.jpg)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/vnc_desktop.jpg)
 
 > Note : To connect to VNC, make sure that both devices are connected to the same network.
 
@@ -183,16 +183,16 @@ By connecting your smartphone or laptop to this WiFi Hotspot, you can do VNC and
 4. Disable the dhcpcd services:
    `sudo systemctl stop dhcpcd`
    `sudo systemctl disable dhcpcd`</br></br>
-   ![](images/stop_dhcpcd.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/stop_dhcpcd.png)
 5. Restart the Raspberry Pi with `sudo reboot -h now`
 6. Configure the connections by clicking on the new network manager icon at the top right.</br></br>
-   ![](images/connections_widget.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/connections_widget.png)
 7. Add a network by clicking on the + button</br></br>
-   ![](images/add_connection_1.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/add_connection_1.png)
 8. Select the Wifi type</br></br>
-   ![](images/add_connection_2.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/add_connection_2.png)
 9. Select Hotspot mode</br></br>
-   ![](images/select_hotspot.png)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/select_hotspot.png)
 10. Reboot and the changes should take effect.
 
 You will notice that even if you are connected to the Hotspot, you can't do VNC because the service has to be started from the Raspberry Pi itself.
@@ -200,11 +200,11 @@ What I recommend to do, is to first connect to your Raspberry Pi in **SSH** and 
 
 1. Install [PuTTY](https://putty.org/ "PuTTY") if your second device is a Windows laptop or [JuiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh&hl=en "JuiceSSH") if it's an Android.
 2. Connect to the Raspberry Pi Hotspot and get its IP Address.</br>
-   ![](images/hotspot.png) ![](images/rpi_ip_address.PNG)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/hotspot.png) ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/rpi_ip_address.PNG)
 3. Enter IP Address in PuTTY.</br></br>
-   ![](images/putty_config.PNG)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/putty_config.PNG)
 4. Once connected, enter your login and password. Then, run `vncserver`.</br></br>
-   ![](images/start_vnc_putty.PNG)
+   ![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/start_vnc_putty.PNG)
 5. You can now open VNC Viewer and control your Raspberry Pi !
 
 ## 4. Basic workflow
@@ -217,4 +217,4 @@ What I recommend to do, is to first connect to your Raspberry Pi in **SSH** and 
 6. Connect your device to VNC.
 7. Launch Kstars and enjoy imaging !</br></br>
 
-![](images/final_illustration.jpg)
+![](https://raw.githubusercontent.com/Kelian98/Easy-astrophotography-equipment-control/master/images/final_illustration.jpg)
